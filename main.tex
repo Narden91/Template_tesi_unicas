@@ -1,0 +1,167 @@
+%-------------------------------
+% ©Emanuele Nardone 
+%-------------------------------
+
+\documentclass[a4paper, 12pt]{report}
+\usepackage[latin1]{inputenc}
+%\usepackage[italian]{babel} % per utilizzare il dizionario italiano 
+\usepackage[english]{babel}
+\usepackage{blindtext}
+\usepackage[T1]{fontenc}
+\usepackage[Lenny]{fncychap} %Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[centertags]{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{newlfont}
+\usepackage{fancyhdr}
+\usepackage{tesisty}
+
+
+%-------------------------------
+% DEFINIZIONE DEGLI ENVIRONMENT
+%-------------------------------
+
+\newtheorem{obs}{Osservazione}[section]
+\newenvironment{oss}
+    {\begin{obs}\begin{normalfont}}
+    {\hfill $\square \!\!\!\!\checkmark$ \end{normalfont}\end{obs}}
+
+\newtheorem{pro}{Problema}[chapter]
+\newenvironment{prob}
+    {\begin{pro}\begin{normalfont}}
+    {\hfill $\spadesuit$ \end{normalfont}\end{pro}}
+
+\newtheorem{teor}{Teorema}[section]
+\newenvironment{teorema}
+    {\begin{teor}\textit }
+    {\hfill  \end{teor}}
+
+\newtheorem{defn}{Definizione}[section]
+\newenvironment{de}
+    {\begin{defn}\begin{normalfont}}
+    {\hfill $\clubsuit$ \end{normalfont}\end{defn}}
+
+%-----------------------------
+% CONFIGURAZIONE DELLA PAGINA
+%-----------------------------
+
+\hfuzz 2pt 
+
+\fancypagestyle{plain}{
+\fancyhead{}\renewcommand{\headrulewidth}{0pt} } \pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\small CAP. \thechapter \textit{ #1}} {} }
+\renewcommand{\sectionmark}[1]{\markright{\small  \thesection \textit{ #1}} {} }
+\voffset=-20pt    % distanza tra il limite superiore del foglio e l'intestazione
+\headsep=40pt     % distanza  l'intestazione ed il testo del corpo
+\hoffset=0 pt     % misura equivalente al margine sinistro
+\textheight=620pt % altezza del corpo del testo
+\textwidth=435pt  % larghezza del corpo del testo
+\footskip=40pt    % distanza tra il testo del corpo ed il pie' di pagina
+\fancyhead{}      % cancella qualsiasi impostazione per l'intestazione
+\fancyfoot{}      % cancella qualsiasi impostazione per il pie' di pagina
+\headwidth=435pt  % larghezza dell'intestazione e del pie' di pagina
+\fancyhead[R]{\rightmark} \fancyfoot[L]{\leftmark}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}   % spessore della linea dell'intestazione
+\renewcommand{\footrulewidth}{0.3pt}   % spessore della linea del pi�di pagina
+
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+%------------------------------------------------
+% INIZIO DOCUMENTO
+%------------------------------------------------
+ 
+\begin{document}
+
+%Sostituire Dedica con il testo desiderato
+\dedicate{\textit{Dedica}}
+
+\corso{Ingegneria Informatica} 
+\titoloTesi{TITOLO TESI} 
+\ciclo{Laurea Magistrale}
+\anno{A.A 2019/2020}
+\relatore{Professore}
+\autore{Candidato}
+\matricola{1234567}
+\correlatore{Correlatore}
+\baselineskip=25pt
+\intestazione
+
+%------------------------------------------------
+% STYLE & DEFINITIONS
+%------------------------------------------------
+
+\fancypagestyle{plain}{
+\fancyhead{}\renewcommand{\headrulewidth}{0pt} } \pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\small Cap. \thechapter \textit{ #1}} {} }
+\renewcommand{\sectionmark}[1]{\markright{\small  \S \thesection \textit{ #1}} {} }
+\voffset=-20pt                         % distanza tra il limite superiore del foglio e l'intestazione
+\headsep=40pt                          % distanza  l'intestazione ed il testo del corpo
+\hoffset=0pt                           % misura equivalente al margine sinistro
+\textheight=620pt                      % altezza del corpo del testo
+\textwidth=435pt                       % larghezza del corpo del testo
+\footskip=40pt                         % distanza tra il testo del corpo ed il pie' di pagina
+\fancyhead{}                           % cancella qualsiasi impostazione per l'intestazione
+\fancyfoot{}                           % cancella qualsiasi impostazione per il pie' di pagina
+\headwidth=435pt                       % larghezza dell'intestazione e del pie' di pagina
+\fancyhead[R]{\rightmark} \fancyfoot[L]{\leftmark}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}   % spessore della linea dell'intestazione
+\renewcommand{\footrulewidth}{0.3pt}   % spessore della linea del pie' di pagina
+
+\fancyfoot{}
+
+%\fancyhf{} %elimina header/footer vecchi
+
+%------------------------------------------------
+% TABELLA DEI CONTENUTI
+%------------------------------------------------
+
+\tableofcontents
+\fancyhf{}
+\newpage
+
+\pagenumbering{arabic} %  arabic => Roman x numeri di pagina in numeri romani
+\fancyfoot[R]{\thepage}
+
+%------------------------------------------------
+% INTRODUZIONE
+%------------------------------------------------
+
+\include{Introduction}
+
+%\fancyhf{} 
+%\fancyfoot[R]{\thepage}
+
+%\fancyhead[R]{\rightmark} \fancyhead[L]{\leftmark}
+
+%\fancyfoot[R]{\thepage}
+
+%------------------------------------------------
+% INCLUSIONE CAPITOLI
+%------------------------------------------------
+\include{Chapter_1}
+
+\include{Chapter_2}
+
+%------------------------------------------------
+% ELENCO DELLE FIGURE 
+%------------------------------------------------
+\include{List_of_Figures}
+
+%------------------------------------------------
+% ELENCO DELLE TABELLE 
+%------------------------------------------------
+\include{List_of_Tables}
+
+
+%------------------------------------------------
+% BIBLIOGRAFIA
+%------------------------------------------------
+\include{Bibliography}
+
+\end{document}
